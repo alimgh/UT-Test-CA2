@@ -16,17 +16,12 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 public class Gedcom_Service {
 	
-	private static HashMap<String, Family> families = new HashMap<String, Family>();
-	private static HashMap<String, Individual> individuals = new HashMap<String, Individual>();
+	static HashMap<String, Family> families = new HashMap<String, Family>();
+	static HashMap<String, Individual> individuals = new HashMap<String, Individual>();
 	private static SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 	private static String fileName = null;
 	private static ArrayList<Individual> dupInd = new ArrayList<Individual>();
@@ -156,8 +151,8 @@ public class Gedcom_Service {
 		br.close();
 	}
 
-	/*public static void printMaps() throws FileNotFoundException, IOException {
-		
+	public static void printMaps() throws FileNotFoundException, IOException {
+
 		Map<String, Individual> indMap = new TreeMap<String, Individual>(individuals);
 		Iterator<Map.Entry<String, Individual>> indEntries = indMap.entrySet().iterator();
 		writeToFile(
@@ -166,14 +161,14 @@ public class Gedcom_Service {
 		while (indEntries.hasNext()) {
 			Map.Entry<String, Individual> indEntry = indEntries.next();
 			Individual ind = indEntry.getValue();
-			
+
 			writeToFile(indEntry.getKey() + " Name: " + ind.getName() + ", Sex: " + ind.getSex() + ", DOB: "
 					+ ind.getBirth() + ", DOD: " + ind.getDeath() + ", Spouse of: " + ind.getSpouseOf() + ", Child of: "
 					+ ind.getChildOf());
 
 		}
-		
-		
+
+
 		Map<String, Family> famMap = new TreeMap<String, Family>(families);
 		Iterator<Map.Entry<String, Family>> famEntries = famMap.entrySet().iterator();
 		writeToFile(
@@ -184,11 +179,11 @@ public class Gedcom_Service {
 			Family fam = famEntry.getValue();
 			writeToFile(famEntry.getKey() + " - Husband: " + fam.getHusb() + ", Wife: " + fam.getWife() + ", Children: "
 					+ fam.getChild() + ", Marriage Date: " + fam.getMarriage() + ", Divorce Date: " + fam.getDivorce());
-			
+
 		}
 		System.out.println("\n");
-		
-	}*/
+
+	}
 
 	public static void createOutputFile() throws IOException {
 		System.out.println("Please Enter Output File Path: ");
